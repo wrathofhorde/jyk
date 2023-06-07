@@ -16,13 +16,6 @@ responseWarnTime = isNaN(responseWarnTime)
   ? DEF_RESPONSE_WARN_TIME
   : responseWarnTime;
 
-
-
-
-
-
-
-
 const config = {
   env: {
     product,

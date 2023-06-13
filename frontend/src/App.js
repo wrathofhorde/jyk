@@ -1,5 +1,4 @@
-import Item from "./components/Item";
-import styles from "./App.module.css";
+import Menu from "./pages/Menu";
 
 const items = [
   {
@@ -35,16 +34,7 @@ const items = [
 ];
 
 function App() {
-  return (
-    <div className={styles.container}>
-      <Item item={items[0]} />
-      <Item item={items[1]} />
-      <Item item={items[2]} />
-      <Item item={items[3]} />
-      <Item item={items[4]} />
-      <Item item={items[5]} />
-    </div>
-  );
+  return <Menu items={items} />;
 }
 
 export default App;

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import styles from "./FoodPicture.module.css";
 
 function FoodPicture(props) {

@@ -1,9 +1,9 @@
-import nftRouter from "./nft";
 import testRouter from "./test";
+import foodRouter from "./food";
 
 const router = {
-  "/nft": nftRouter,
   "/test": testRouter,
+  "/food": foodRouter,
 };
 
 export default router;

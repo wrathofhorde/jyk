@@ -75,4 +75,5 @@ test.post("/insert/comment", async (req, res) => {
     res.send(responseBody.make(errorCode.failure, msg));
   }
 });
+
 export default test;

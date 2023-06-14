@@ -4,7 +4,7 @@ import styles from "./Menu.module.css";
 
 function Menu(props) {
   return (
-    <div className={styles.container}>
+    <div className={styles.menu}>
       {props.items.map((item, index) => (
         <Item key={index} item={item} />
       ))}

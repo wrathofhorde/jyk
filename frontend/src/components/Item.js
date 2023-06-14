@@ -5,11 +5,17 @@ import FoodPicture from "./FoodPicture";
 import styles from "./Item.module.css";
 
 function Item(props) {
+  const item = props.item;
+
+  const onClick = () => {
+    console.log(item);
+  };
+
   return (
-    <div className={styles.item}>
-      <FoodPicture image={props.item.image} />
-      <FoodName name={props.item.name} />
-      <FoodPrice price={props.item.price} />
+    <div className={styles.item} onClick={onClick}>
+      <FoodPicture image={item.image} />
+      <FoodName name={item.name} />
+      <FoodPrice price={item.price} />
     </div>
   );
 }

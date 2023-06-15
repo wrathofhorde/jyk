@@ -20,7 +20,7 @@ const items = [
   },
   {
     image: `${process.env.PUBLIC_URL}/4.png`,
-    name: "Thanksgiving Turkey",
+    name: "Thanksgiving Turkey Hello World",
     price: 150,
   },
   {

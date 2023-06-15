@@ -1,9 +1,10 @@
 .menu {
   width: 90%;
-  max-width: 800px;
+  max-width: 750px;
+  min-width: 620px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 30px;
+  row-gap: 20px;
   justify-items: center;
   align-items: center;
 }

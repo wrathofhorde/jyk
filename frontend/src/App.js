@@ -1,5 +1,7 @@
 import Menu from "./pages/Menu";
 
+import styles from "./App.module.css";
+
 const items = [
   {
     image: `${process.env.PUBLIC_URL}/1.png`,
@@ -18,7 +20,7 @@ const items = [
   },
   {
     image: `${process.env.PUBLIC_URL}/4.png`,
-    name: "Thanksgiving Turkey",
+    name: "Thanksgiving Turkey Hello World",
     price: 150,
   },
   {
@@ -34,7 +36,11 @@ const items = [
 ];
 
 function App() {
-  return <Menu items={items} />;
+  return (
+    <div className={styles.container}>
+      <Menu items={items} />
+    </div>
+  );
 }
 
 export default App;

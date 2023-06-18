@@ -35,12 +35,12 @@ const items = [
   },
 ];
 
-function App() {
+const App = () => {
   return (
     <div className={styles.container}>
       <Menu items={items} />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,10 +1,11 @@
 import express from "express";
+import config from "../init/config";
 import logger from "../init/logger";
 import strings from "../common/strings";
 import errorCode from "../common/error-code";
 import responseBody from "../common/responseBody";
 
-const path = "/foods";
+const path = `http://${config.env.ip}/foods`;
 const items = [
   {
     image: `${path}/Hamburger.png`,
@@ -108,10 +109,11 @@ const items = [
   },
 ];
 
-const food = express.Router();
+const foods = express.Router();
 
 /* ********* url parameters ********* **/
-food.get("/list", async (req, res, next) => {
+foods.get("/list", async (req, res, next) => {
+  console.log("/list");
   try {
     return res.send(
       responseBody.make(
@@ -127,4 +129,4 @@ food.get("/list", async (req, res, next) => {
   }
 });
 
-export default food;
+export default foods;

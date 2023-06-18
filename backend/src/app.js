@@ -5,9 +5,10 @@ import config from "./init/config";
 
 db.init();
 
+const ip = config.env.ip;
 const port = config.env.port;
 
 app.listen(port, () => {
-  console.log(`✅ http://localhost:${port}/`);
+  console.log(`✅ ${ip}:${port}/`);
   logger.info(`Start Server port:${port}`);
 });

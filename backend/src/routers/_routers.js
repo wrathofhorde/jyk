@@ -1,9 +1,9 @@
 import testRouter from "./test";
-import foodRouter from "./food";
+import foodsRouter from "./foods";
 
 const router = {
   "/test": testRouter,
-  "/food": foodRouter,
+  "/foods": foodsRouter,
 };
 
 export default router;

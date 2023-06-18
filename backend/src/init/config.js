@@ -1,5 +1,6 @@
 import path from "path";
 import dotenv from "dotenv";
+import { networkInterfaces } from "os";
 
 const DEF_PORT = 3000;
 const DEF_RESPONSE_WARN_TIME = 3;
@@ -16,29 +17,33 @@ responseWarnTime = isNaN(responseWarnTime)
   ? DEF_RESPONSE_WARN_TIME
   : responseWarnTime;
 
+const results = {};
+const nets = networkInterfaces();
+const names = Object.keys(nets);
+
+names.forEach((name) => {
+  nets[name].forEach((net) => {
+    // console.log(net);
+    const familyV4Value = typeof net.family === "string" ? "IPv4" : 4;
+    if (net.family === familyV4Value && !net.internal) {
+      results[name] = net.address;
+    }
+  });
+});
+
+console.log(results);
+const eths = Object.keys(results);
+const ip = eths.length === 1 ? results[eths[0]] : "127.0.0.1";
+
 const config = {
   env: {
     product,
+    ip,
     port,
     responseWarnTime,
     logDir: process.env.LOG_DIR,
     logMaxSize: process.env.LOG_MAX_SIZE,
     logMaxFiles: process.env.LOG_MAX_FILES,
-  },
-  api: {
-    key: process.env.API_KEY,
-    host: process.env.API_HOST,
-    auth: process.env.API_AUTH,
-    secretKey: process.env.API_JWT_SECRET_KEY,
-  },
-  url: {
-    nftToken: process.env.URL_NFT_TOKEN,
-    nftBalance: process.env.URL_NFT_BALANCE,
-    nftTokenAttr: process.env.URL_NFT_TOKEN_ATTR,
-    nftTokenOwner: process.env.URL_NFT_TOKEN_OWNER,
-    nftAllTokenid: process.env.URL_NFT_ALL_TOKEN_ID,
-    nftTokenImgUrl: process.env.URL_NFT_TOKEN_IMG_URL,
-    nftTotalBalance: process.env.URL_NFT_TOTAL_BALANCE,
   },
   db: {
     host: process.env.DB_HOST,

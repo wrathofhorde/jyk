@@ -9,10 +9,10 @@ import routers from "../routers/_routers";
 
 const app = express();
 
-if (config.env.product) {
-  app.use(hpp());
-  app.use(helmet());
-}
+// if (config.env.product) {
+//   app.use(hpp());
+//   app.use(helmet());
+// }
 
 const morganFormat =
   ":remote-addr - :remote-user " +

@@ -1,4 +1,5 @@
 import Menu from "./pages/Menu";
+import { useEffect, useState } from "react";
 
 import styles from "./App.module.css";
 
@@ -36,9 +37,20 @@ const items = [
 ];
 
 const App = () => {
+  const [foods, setFoods] = useState([]);
+  useEffect(() => {
+    const getList = async () => {
+      const data = await fetch("http://localhost:3001/foods/list");
+      const foodsList = await data.json();
+      console.log(foodsList);
+      setFoods(foodsList);
+    };
+    getList();
+  }, []);
+
   return (
     <div className={styles.container}>
-      <Menu items={items} />
+      <Menu items={foods} />
     </div>
   );
 };

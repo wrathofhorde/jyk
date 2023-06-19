@@ -1,5 +1,6 @@
-import hpp from "hpp";
-import helmet from "helmet";
+// import hpp from "hpp";
+// import helmet from "helmet";
+import cors from "cors";
 import morgan from "morgan";
 import express from "express";
 import config from "./config";
@@ -33,7 +34,8 @@ app.use(express.json());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(`${__dirname}/../public`));
-
+// cors setting
+app.use(cors());
 // routing table 적용
 for (let key in routers) {
   app.use(key, routers[key]);

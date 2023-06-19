@@ -38,12 +38,15 @@ const items = [
 
 const App = () => {
   const [foods, setFoods] = useState([]);
+
   useEffect(() => {
     const getList = async () => {
       const data = await fetch("http://localhost:3001/foods/list");
-      const foodsList = await data.json();
-      console.log(foodsList);
-      setFoods(foodsList);
+      const rsp = await data.json();
+
+      if (rsp.resultCode === 0) {
+        setFoods(rsp.data);
+      }
     };
     getList();
   }, []);

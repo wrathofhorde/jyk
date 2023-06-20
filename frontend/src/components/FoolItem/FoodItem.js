@@ -7,7 +7,6 @@ import styles from "./FoodItem.module.css";
 
 const FoodItem = (props) => {
   const item = props.item;
-  console.log(item);
 
   const onClick = () => {
     console.log(item);

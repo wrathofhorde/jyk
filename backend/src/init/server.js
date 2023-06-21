@@ -1,6 +1,7 @@
 // import hpp from "hpp";
 // import helmet from "helmet";
 import cors from "cors";
+import path from "path";
 import morgan from "morgan";
 import express from "express";
 import config from "./config";
@@ -41,8 +42,11 @@ for (let key in routers) {
   app.use(key, routers[key]);
 }
 
-app.get("/", (req, rsp) => {
-  rsp.send("Hello, world");
+app.get("/", (req, res) => {
+  const react = config.env.product
+    ? path.join(__dirname, "../react/index.html")
+    : path.join(__dirname, "../../dst/react/index.html");
+  res.sendFile(react);
 });
 
 export default app;

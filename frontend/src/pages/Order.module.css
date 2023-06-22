@@ -5,6 +5,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  padding: 10px 10px 10px 10px;
 }
 
 @media (max-width: 900px) {

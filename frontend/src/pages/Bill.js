@@ -1,6 +1,6 @@
+import Sum from "../components/Bill/Sum";
 import Title from "../components/Bill/Title";
 import Details from "../components/Bill/Details";
-import Sum from "../components/Bill/Sum";
 
 import styles from "./Bill.module.css";
 

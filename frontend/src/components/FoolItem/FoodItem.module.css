@@ -11,5 +11,5 @@
 }
 
 .item:active {
-  border: 2px solid cornflowerblue;
+  border: 2px solid rgb(143, 163, 163);
 }

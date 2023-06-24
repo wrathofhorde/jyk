@@ -43,10 +43,11 @@ for (let key in routers) {
 }
 
 app.get("/", (req, res) => {
-  const react = config.env.product
-    ? path.join(__dirname, "../react/index.html")
-    : path.join(__dirname, "../../dst/react/index.html");
-  res.sendFile(react);
+  if (config.env.product) {
+    res.sendFile(path.join(__dirname, "../react/index.html"));
+  } else {
+    res.send("Hello!");
+  }
 });
 
 export default app;

@@ -1,5 +1,5 @@
 .area {
-  width: 7%;
+  width: 25%;
   position: relative;
 }
 
@@ -19,4 +19,23 @@
   border-radius: 50%;
   background-color: darkslateblue;
   border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.round:active {
+  background-color: rgb(94, 80, 185);
+}
+
+.button_img {
+  width: 80%;
+  height: 80%;
+}
+
+@media (min-width: 1300px) {
+  .area {
+    width: 20%;
+  }
 }

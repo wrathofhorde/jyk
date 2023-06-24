@@ -6,17 +6,18 @@ import styles from "./FoodItem.module.css";
 
 const FoodItem = (props) => {
   const item = props.item;
+  const addFoodHandler = props.addFoodHandler;
 
   const onClickItem = () => {
-    console.log(item);
+    addFoodHandler(item);
   };
 
   return (
-    <div className={styles.item} onClick={onClickItem}>
+    <button className={styles.item} onClick={onClickItem}>
       <FoodPicture image={item.image} />
       <FoodName name={item.name} />
       <FoodPrice price={item.price} />
-    </div>
+    </button>
   );
 };
 

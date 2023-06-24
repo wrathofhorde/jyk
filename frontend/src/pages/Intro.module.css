@@ -1,0 +1,27 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/public/images/intro.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 12rem;
+}
+
+.order {
+  color: aliceblue;
+  font-size: 5rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+}
+
+.order:active {
+  font-size: 4.8rem;
+  background: none;
+  border: none;
+}

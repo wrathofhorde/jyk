@@ -6,11 +6,13 @@ import Buttons from "../components/Bill/Buttons";
 import styles from "./Bill.module.css";
 
 const Bill = (props) => {
+  const { orders, quantityHandler } = props;
+
   return (
     <div className={styles.bill}>
       <Title title="Table 01" />
-      <Details />
-      <Sum />
+      <Details orders={orders} quantityHandler={quantityHandler} />
+      <Sum orders={orders} />
       <Buttons />
     </div>
   );

@@ -1,10 +1,12 @@
 import Bill from "./Bill";
 import Menu from "./Menu";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Order.module.css";
 
 const Order = (props) => {
+  const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [orders, setOrders] = useState([]);
 
@@ -59,11 +61,13 @@ const Order = (props) => {
 
       if (rsp.resultCode === 0) {
         setFoods(rsp.data);
+      } else {
+        navigate("/");
       }
     };
 
     getList();
-  }, []);
+  }, [navigate]);
 
   return (
     <div className={styles.container}>

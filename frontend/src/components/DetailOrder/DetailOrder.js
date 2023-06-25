@@ -17,7 +17,7 @@ const DetailOrder = (props) => {
   const minusOnClickHandler = (event) => {
     if (isClicked.minus) return;
     isClicked.minus = true;
-    console.log("-");
+
     quantityHandler(id, -1);
 
     isClicked.minus = false;
@@ -25,7 +25,7 @@ const DetailOrder = (props) => {
   const plusOnClickHandler = (event) => {
     if (isClicked.plus) return;
     isClicked.plus = true;
-    console.log("+");
+
     quantityHandler(id, 1);
 
     isClicked.plus = false;

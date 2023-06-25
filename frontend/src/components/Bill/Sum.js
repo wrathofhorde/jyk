@@ -7,7 +7,7 @@ const Sum = (props) => {
 
   return (
     <div className={styles.area}>
-      <h2 className={styles.total}>TOTAL ${sum}</h2>
+      <h2 className={styles.total}>TOTAL ${Math.round(sum * 100) / 100}</h2>
     </div>
   );
 };

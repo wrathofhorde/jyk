@@ -1,7 +1,11 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./Buttons.module.css";
 
 const Buttons = (props) => {
+  const { orders } = props;
+  const navigate = useNavigate();
   const isClicked = useRef({
     cancel: false,
     order: false,
@@ -13,7 +17,7 @@ const Buttons = (props) => {
     if (isClicked.cancel) return;
     isClicked.cancel = true;
 
-    console.log("cancel");
+    navigate("/");
 
     isClicked.cancel = false;
   };
@@ -31,7 +35,11 @@ const Buttons = (props) => {
       <button className={cancelClassname} onClick={cancelHandler}>
         Cancel
       </button>
-      <button className={orderClassname} onClick={orderHandler}>
+      <button
+        className={orderClassname}
+        disabled={orders.length ? false : true}
+        onClick={orderHandler}
+      >
         Order
       </button>
     </div>

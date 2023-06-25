@@ -1,5 +1,6 @@
 import Order from "./pages/Order";
 import Intro from "./pages/Intro";
+import { Routes, Route } from "react-router-dom";
 
 import styles from "./App.module.css";
 
@@ -10,8 +11,10 @@ import styles from "./App.module.css";
 const App = () => {
   return (
     <div className={styles.container}>
-      {/* <Intro /> */}
-      <Order />
+      <Routes>
+        <Route path="/order" element={<Order />} />
+        <Route path="*" element={<Intro />} />
+      </Routes>
     </div>
   );
 };

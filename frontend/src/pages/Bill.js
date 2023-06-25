@@ -13,7 +13,7 @@ const Bill = (props) => {
       <Title title="Table 01" />
       <Details orders={orders} quantityHandler={quantityHandler} />
       <Sum orders={orders} />
-      <Buttons />
+      <Buttons orders={orders} />
     </div>
   );
 };

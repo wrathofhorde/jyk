@@ -1,13 +1,13 @@
+import { Link } from "react-router-dom";
+
 import styles from "./Intro.module.css";
 
 const Intro = (props) => {
-  const orderHandler = (event) => {};
-
   return (
     <div className={styles.container}>
-      <button className={styles.order} onClick={orderHandler}>
+      <Link to="/order" className={styles.order}>
         ORDER
-      </button>
+      </Link>
     </div>
   );
 };

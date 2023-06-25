@@ -11,25 +11,25 @@ const items = [
     id: 1,
     image: `${path}Hamburger.png`,
     name: "Hamburger",
-    price: 10,
+    price: 9.99,
   },
   {
     id: 2,
     image: `${path}Pizza.png`,
     name: "Pizza",
-    price: 20,
+    price: 18.99,
   },
   {
     id: 3,
     image: `${path}ApplePie.png`,
     name: "Apple Pie",
-    price: 5,
+    price: 4.5,
   },
   {
     id: 4,
     image: `${path}ThanksgivingTurkey.png`,
     name: "Thanksgiving Turkey",
-    price: 150,
+    price: 149.99,
   },
   {
     id: 5,
@@ -89,7 +89,7 @@ const items = [
     id: 14,
     image: `${path}SemiSkimmedMilk.png`,
     name: "Semi-Skimmed Milk",
-    price: 2,
+    price: 2.5,
   },
   {
     id: 15,
@@ -101,7 +101,7 @@ const items = [
     id: 16,
     image: `${path}Sultanas.png`,
     name: "Sultanas",
-    price: 3,
+    price: 2.99,
   },
   {
     id: 17,

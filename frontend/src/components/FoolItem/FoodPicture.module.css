@@ -2,13 +2,11 @@
   position: relative;
   width: 80%;
 }
-
 .frame::after {
   display: block;
   content: "";
   padding-bottom: 100%;
 }
-
 .picture {
   position: absolute;
   top: 0;

@@ -1,6 +1,6 @@
-import { ReactDOM } from "react-dom";
+import ReactDOM from "react-dom";
 
-import styles from "./OrderModal.module.css";
+import styles from "./ErrorModal.module.css";
 
 const Backdrop = (props) => {
   return <div className={styles.backdrop} onClick={props.onConfirm} />;
@@ -22,7 +22,7 @@ const ModalOverlay = (props) => {
   );
 };
 
-const OrderModal = (props) => {
+const ErrorModal = (props) => {
   return (
     <div>
       {ReactDOM.createPortal(
@@ -30,11 +30,15 @@ const OrderModal = (props) => {
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay />,
+        <ModalOverlay
+          title={props.title}
+          message={props.message}
+          onConfirm={props.onConfirm}
+        />,
         document.getElementById("overlay-root")
       )}
     </div>
   );
 };
 
-export default OrderModal;
+export default ErrorModal;

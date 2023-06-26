@@ -5,12 +5,14 @@ import Menu from "../UI/Menu";
 import api from "../common/api";
 
 import styles from "./Order.module.css";
+import ErrorModal from "../UI/ErrorModal";
 
 const Order = (props) => {
+  const serverUrl = "http://localhost:3001";
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [orderList, setOrderList] = useState([]);
-  const serverUrl = "http://localhost:3001";
+  const [error, setError] = useState(null);
 
   const addOrderListHandler = (item) => {
     setOrderList((prevState) => {
@@ -62,12 +64,24 @@ const Order = (props) => {
 
       if (rsp.resultCode === 0) {
         console.log("orderlist sent");
+        navigate("/");
       } else {
         console.log("order failure");
+        setError({
+          title: "Error!",
+          message: "Order Failure",
+        });
       }
+    } catch (e) {
+      setError({
+        title: "Error!",
+        message: "Unknown order error",
+      });
+    }
+  };
 
-      navigate("/");
-    } catch (e) {}
+  const errorConfirmHandler = () => {
+    navigate("/");
   };
 
   useEffect(() => {
@@ -80,20 +94,31 @@ const Order = (props) => {
         } else {
           navigate("/");
         }
-      } catch (e) {}
+      } catch (e) {
+        navigate("/");
+      }
     };
 
     getList();
   }, [navigate]);
 
   return (
-    <div className={styles.container}>
-      <Menu items={foods} addOrderListHandler={addOrderListHandler} />
-      <Bill
-        orderList={orderList}
-        quantityHandler={quantityHandler}
-        postOrderHandler={postOrderHandler}
-      />
+    <div>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorConfirmHandler}
+        />
+      )}
+      <div className={styles.container}>
+        <Menu items={foods} addOrderListHandler={addOrderListHandler} />
+        <Bill
+          orderList={orderList}
+          quantityHandler={quantityHandler}
+          postOrderHandler={postOrderHandler}
+        />
+      </div>
     </div>
   );
 };

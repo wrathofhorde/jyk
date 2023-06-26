@@ -1,7 +1,7 @@
-import Bill from "./Bill";
-import Menu from "./Menu";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Bill from "../UI/Bill";
+import Menu from "../UI/Menu";
 
 import styles from "./Order.module.css";
 

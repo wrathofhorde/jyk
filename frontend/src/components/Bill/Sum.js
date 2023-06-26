@@ -1,7 +1,7 @@
 import styles from "./Sum.module.css";
 
 const Sum = (props) => {
-  const sum = props.orders.reduce((acc, cur) => {
+  const sum = props.orderList.reduce((acc, cur) => {
     return acc + cur.total;
   }, 0);
 

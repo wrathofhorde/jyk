@@ -6,10 +6,10 @@ import styles from "./FoodItem.module.css";
 
 const FoodItem = (props) => {
   const item = props.item;
-  const addFoodHandler = props.addFoodHandler;
+  const addOrderListHandler = props.addOrderListHandler;
 
   const onClickItem = () => {
-    addFoodHandler(item);
+    addOrderListHandler(item);
   };
 
   return (

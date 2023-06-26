@@ -9,7 +9,7 @@ const Menu = (props) => {
         <FooodItem
           key={item.id}
           item={item}
-          addFoodHandler={props.addFoodHandler}
+          addOrderListHandler={props.addOrderListHandler}
         />
       ))}
     </div>

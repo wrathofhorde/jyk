@@ -141,7 +141,20 @@ foods.get("/list", async (req, res, next) => {
   } catch (e) {
     console.log(e);
     logger.error(e);
-    return res.send(responseBody.make(errorCode.success, strings.systemError));
+    return res.send(responseBody.make(errorCode.failure, strings.systemError));
+  }
+});
+
+foods.post("/order", async (req, res) => {
+  console.log("/order");
+  try {
+    const { orderList } = req.body;
+    console.log(orderList);
+    return res.send(responseBody.make(errorCode.success, strings.success));
+  } catch (e) {
+    console.log(e);
+    logger.error(e);
+    return res.send(responseBody.make(errorCode.failure, strings.systemError));
   }
 });
 

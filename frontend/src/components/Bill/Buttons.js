@@ -1,7 +1,7 @@
 import styles from "./Buttons.module.css";
 
 const Buttons = (props) => {
-  const { orders, orderHandler, cancelHandler } = props;
+  const { orderList, orderHandler, cancelHandler } = props;
   const orderClassname = `${styles.common} ${styles.order}`;
   const cancelClassname = `${styles.common} ${styles.cancel}`;
 
@@ -12,7 +12,7 @@ const Buttons = (props) => {
       </button>
       <button
         className={orderClassname}
-        disabled={orders.length ? false : true}
+        disabled={orderList.length ? false : true}
         onClick={orderHandler}
       >
         Order

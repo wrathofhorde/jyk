@@ -8,7 +8,7 @@ import Buttons from "../components/Bill/Buttons";
 import styles from "./Bill.module.css";
 
 const Bill = (props) => {
-  const { orders, quantityHandler } = props;
+  const { orderList, quantityHandler, postOrderHandler } = props;
   const navigate = useNavigate();
   const isClicked = useRef({
     order: false,
@@ -23,11 +23,12 @@ const Bill = (props) => {
 
     isClicked.cancel = false;
   };
-  const orderHandler = (event) => {
+  const orderHandler = async (event) => {
     if (isClicked.order) return;
     isClicked.order = true;
 
     console.log("order");
+    await postOrderHandler();
 
     isClicked.order = false;
   };
@@ -35,10 +36,10 @@ const Bill = (props) => {
   return (
     <div className={styles.bill}>
       <Title title="Table 01" />
-      <Details orders={orders} quantityHandler={quantityHandler} />
-      <Sum orders={orders} />
+      <Details orderList={orderList} quantityHandler={quantityHandler} />
+      <Sum orderList={orderList} />
       <Buttons
-        orders={orders}
+        orderList={orderList}
         orderHandler={orderHandler}
         cancelHandler={cancelHandler}
       />

@@ -2,16 +2,18 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Bill from "../UI/Bill";
 import Menu from "../UI/Menu";
+import api from "../common/api";
 
 import styles from "./Order.module.css";
 
 const Order = (props) => {
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
-  const [orders, setOrders] = useState([]);
+  const [orderList, setOrderList] = useState([]);
+  const serverUrl = "http://localhost:3001";
 
-  const addFoodHandler = (item) => {
-    setOrders((prevState) => {
+  const addOrderListHandler = (item) => {
+    setOrderList((prevState) => {
       const filtered = prevState.filter((food) => food.id === item.id);
       if (filtered.length) {
         // console.log(`${item.id} exists`);
@@ -36,7 +38,7 @@ const Order = (props) => {
   };
 
   const quantityHandler = (id, quantity) => {
-    setOrders((prevState) => {
+    setOrderList((prevState) => {
       const idx = prevState.findIndex((order) => order.id === id);
       const changedOrder = prevState[idx];
       changedOrder.quantity += quantity;
@@ -54,16 +56,31 @@ const Order = (props) => {
     });
   };
 
-  useEffect(() => {
-    const getList = async () => {
-      const data = await fetch("http://localhost:3001/foods/list");
-      const rsp = await data.json();
+  const postOrderHandler = async () => {
+    try {
+      const rsp = await api.post(`${serverUrl}/foods/order`, { orderList });
 
       if (rsp.resultCode === 0) {
-        setFoods(rsp.data);
+        console.log("orderlist sent");
       } else {
-        navigate("/");
+        console.log("order failure");
       }
+
+      navigate("/");
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    const getList = async () => {
+      try {
+        const rsp = await api.get(`${serverUrl}/foods/list`);
+
+        if (rsp.resultCode === 0) {
+          setFoods(rsp.data);
+        } else {
+          navigate("/");
+        }
+      } catch (e) {}
     };
 
     getList();
@@ -71,8 +88,12 @@ const Order = (props) => {
 
   return (
     <div className={styles.container}>
-      <Menu items={foods} addFoodHandler={addFoodHandler} />
-      <Bill orders={orders} quantityHandler={quantityHandler} />
+      <Menu items={foods} addOrderListHandler={addOrderListHandler} />
+      <Bill
+        orderList={orderList}
+        quantityHandler={quantityHandler}
+        postOrderHandler={postOrderHandler}
+      />
     </div>
   );
 };

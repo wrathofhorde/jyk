@@ -150,9 +150,7 @@ foods.post("/order", async (req, res) => {
   try {
     console.log(req.body);
     const { tableNo, orderList, total } = req.body;
-    const acc = orderList.reduce((acc, cur) => {
-      return acc + cur.total;
-    }, 0);
+    const acc = orderList.reduce((acc, cur) => acc + cur.total, 0);
     const check = Math.round(acc * 100) / 100;
 
     if (check !== total) {

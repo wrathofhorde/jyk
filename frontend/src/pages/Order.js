@@ -33,9 +33,7 @@ const Order = (props) => {
           total: item.price,
         },
       ];
-
       // console.log(newList);
-
       return newList;
     });
   };
@@ -61,9 +59,7 @@ const Order = (props) => {
 
   const postOrderHandler = async () => {
     try {
-      const acc = orderList.reduce((acc, cur) => {
-        return acc + cur.total;
-      }, 0);
+      const acc = orderList.reduce((acc, cur) => acc + cur.total, 0);
       const total = Math.round(acc * 100) / 100;
       const rsp = await api.post(`${serverUrl}/foods/order`, {
         tableNo,
@@ -93,6 +89,7 @@ const Order = (props) => {
   };
 
   const messageConfirmHandler = () => {
+    setMessage(null);
     navigate("/");
   };
 

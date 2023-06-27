@@ -1,9 +1,7 @@
 import styles from "./Sum.module.css";
 
 const Sum = (props) => {
-  const sum = props.orderList.reduce((acc, cur) => {
-    return acc + cur.total;
-  }, 0);
+  const sum = props.orderList.reduce((acc, cur) => acc + cur.total, 0);
 
   return (
     <div className={styles.area}>

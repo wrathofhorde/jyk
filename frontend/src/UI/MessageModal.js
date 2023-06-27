@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
+import Card from "./Card";
 
-import styles from "./ErrorModal.module.css";
+import styles from "./MessageModal.module.css";
 
 const Backdrop = (props) => {
   return <div className={styles.backdrop} onClick={props.onConfirm} />;
@@ -8,7 +9,7 @@ const Backdrop = (props) => {
 
 const ModalOverlay = (props) => {
   return (
-    <div className={styles.modal}>
+    <Card className={styles.modal}>
       <header className={styles.header}>
         <h2>{props.title}</h2>
       </header>
@@ -18,11 +19,11 @@ const ModalOverlay = (props) => {
       <footer className={styles.actions}>
         <button onClick={props.onConfirm}>Okay</button>
       </footer>
-    </div>
+    </Card>
   );
 };
 
-const ErrorModal = (props) => {
+const MessageModal = (props) => {
   return (
     <div>
       {ReactDOM.createPortal(
@@ -41,4 +42,4 @@ const ErrorModal = (props) => {
   );
 };
 
-export default ErrorModal;
+export default MessageModal;

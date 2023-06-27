@@ -3,16 +3,17 @@ import { useNavigate } from "react-router-dom";
 import Bill from "../UI/Bill";
 import Menu from "../UI/Menu";
 import api from "../common/api";
+import MessageModal from "../UI/MessageModal";
 
 import styles from "./Order.module.css";
-import ErrorModal from "../UI/ErrorModal";
 
 const Order = (props) => {
+  const tableNo = "TABLE 01";
   const serverUrl = "http://localhost:3001";
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [orderList, setOrderList] = useState([]);
-  const [error, setError] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const addOrderListHandler = (item) => {
     setOrderList((prevState) => {
@@ -60,27 +61,38 @@ const Order = (props) => {
 
   const postOrderHandler = async () => {
     try {
-      const rsp = await api.post(`${serverUrl}/foods/order`, { orderList });
+      const acc = orderList.reduce((acc, cur) => {
+        return acc + cur.total;
+      }, 0);
+      const total = Math.round(acc * 100) / 100;
+      const rsp = await api.post(`${serverUrl}/foods/order`, {
+        tableNo,
+        orderList,
+        total,
+      });
 
       if (rsp.resultCode === 0) {
-        console.log("orderlist sent");
-        navigate("/");
+        // console.log("orderlist sent");
+        setMessage({
+          title: "Message",
+          message: "Order Successful!",
+        });
       } else {
-        console.log("order failure");
-        setError({
-          title: "Error!",
+        // console.log("order failure");
+        setMessage({
+          title: "Error",
           message: "Order Failure",
         });
       }
     } catch (e) {
-      setError({
-        title: "Error!",
-        message: "Unknown order error",
+      setMessage({
+        title: e.name,
+        message: `Order Failure: ${e.message}`,
       });
     }
   };
 
-  const errorConfirmHandler = () => {
+  const messageConfirmHandler = () => {
     navigate("/");
   };
 
@@ -92,10 +104,16 @@ const Order = (props) => {
         if (rsp.resultCode === 0) {
           setFoods(rsp.data);
         } else {
-          navigate("/");
+          setMessage({
+            title: "Error",
+            message: "Menu Failure",
+          });
         }
       } catch (e) {
-        navigate("/");
+        setMessage({
+          title: e.name,
+          message: e.message,
+        });
       }
     };
 
@@ -104,16 +122,17 @@ const Order = (props) => {
 
   return (
     <div>
-      {error && (
-        <ErrorModal
-          title={error.title}
-          message={error.message}
-          onConfirm={errorConfirmHandler}
+      {message && (
+        <MessageModal
+          title={message.title}
+          message={message.message}
+          onConfirm={messageConfirmHandler}
         />
       )}
       <div className={styles.container}>
         <Menu items={foods} addOrderListHandler={addOrderListHandler} />
         <Bill
+          title={tableNo}
           orderList={orderList}
           quantityHandler={quantityHandler}
           postOrderHandler={postOrderHandler}

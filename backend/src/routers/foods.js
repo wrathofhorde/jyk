@@ -148,8 +148,26 @@ foods.get("/list", async (req, res, next) => {
 foods.post("/order", async (req, res) => {
   console.log("/order");
   try {
-    const { orderList } = req.body;
-    console.log(orderList);
+    console.log(req.body);
+    const { tableNo, orderList, total } = req.body;
+    const acc = orderList.reduce((acc, cur) => {
+      return acc + cur.total;
+    }, 0);
+    const check = Math.round(acc * 100) / 100;
+
+    if (check !== total) {
+      logger.error(`total:${total} and check:${check} mismatched`);
+      return res.send(responseBody.make(errorCode.failure, strings.failure));
+    }
+    if (tableNo.length === 0) {
+      logger.error(`tableNo empty`);
+      return res.send(responseBody.make(errorCode.failure, strings.failure));
+    }
+    if (orderList.length === 0) {
+      logger.error(`orderList empty`);
+      return res.send(responseBody.make(errorCode.failure, strings.failure));
+    }
+
     return res.send(responseBody.make(errorCode.success, strings.success));
   } catch (e) {
     console.log(e);

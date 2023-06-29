@@ -9,23 +9,23 @@ const path = `http://${config.env.ip}:${config.env.port}/foods/`;
 const food_type = [
   {
     type_id: 0,
-    name: "ETC",
-  },
-  {
-    type_id: 1,
     name: "Food",
   },
   {
-    type_id: 2,
+    type_id: 1,
     name: "Dessert",
   },
   {
-    type_id: 3,
+    type_id: 2,
     name: "Drink",
   },
   {
-    type_id: 4,
+    type_id: 3,
     name: "Bread",
+  },
+  {
+    type_id: 255,
+    name: "ETC",
   },
 ];
 const items = [

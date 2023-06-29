@@ -8,7 +8,11 @@ const TabArea = (props) => {
   return (
     <ul className={styles.area}>
       {foodtype.map((type) => (
-        <TabButton key={type.type_id} type={type.type_id}>
+        <TabButton
+          key={type.type_id}
+          type={type.type_id}
+          onClick={props.tapButtonHandler}
+        >
           {type.name}
         </TabButton>
       ))}

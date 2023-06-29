@@ -12,6 +12,7 @@ const Order = (props) => {
   const serverUrl = "http://localhost:3001";
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
+  const [foodtype, setFoodtype] = useState([]);
   const [orderList, setOrderList] = useState([]);
   const [message, setMessage] = useState(null);
 
@@ -99,7 +100,8 @@ const Order = (props) => {
         const rsp = await api.get(`${serverUrl}/foods/list`);
 
         if (rsp.resultCode === 0) {
-          setFoods(rsp.data);
+          setFoods(rsp.data.items);
+          setFoodtype(rsp.data.food_type);
         } else {
           setMessage({
             title: "Error",
@@ -127,7 +129,11 @@ const Order = (props) => {
         />
       )}
       <div className={styles.container}>
-        <Menu items={foods} addOrderListHandler={addOrderListHandler} />
+        <Menu
+          foodtype={foodtype}
+          items={foods}
+          addOrderListHandler={addOrderListHandler}
+        />
         <Bill
           title={tableNo}
           orderList={orderList}

@@ -1,4 +1,5 @@
 import FooodItem from "../components/FoolItem/FoodItem";
+import TabArea from "../components/Tab/TabArea";
 
 import styles from "./Menu.module.css";
 

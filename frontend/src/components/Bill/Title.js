@@ -1,9 +1,9 @@
 import styles from "./Title.module.css";
 
-const Title = (props) => {
+const Title = ({ title }) => {
   return (
     <div className={styles.area}>
-      <h2 className={styles.title}>{props.title}</h2>
+      <h2 className={styles.title}>{title}</h2>
     </div>
   );
 };

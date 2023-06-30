@@ -1,9 +1,9 @@
 import styles from "./FoodQuantity.module.css";
 
-const FoodQuantity = (props) => {
+const FoodQuantity = ({ quantity }) => {
   return (
     <div className={styles.area}>
-      <h3 className={styles.quantity}>{props.quantity}</h3>
+      <h3 className={styles.quantity}>{quantity}</h3>
     </div>
   );
 };

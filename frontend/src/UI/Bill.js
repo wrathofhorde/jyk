@@ -7,8 +7,7 @@ import Buttons from "../components/Bill/Buttons";
 
 import styles from "./Bill.module.css";
 
-const Bill = (props) => {
-  const { title, orderList, quantityHandler, postOrderHandler } = props;
+const Bill = ({ title, orderList, quantityHandler, postOrderHandler }) => {
   const navigate = useNavigate();
   const isClicked = useRef({
     order: false,

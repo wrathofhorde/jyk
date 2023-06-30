@@ -7,7 +7,7 @@ import MessageModal from "../UI/MessageModal";
 
 import styles from "./Order.module.css";
 
-const Order = (props) => {
+const Order = () => {
   const tableNo = "TABLE 01";
   const serverUrl = "http://localhost:3001";
   const navigate = useNavigate();

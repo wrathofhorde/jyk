@@ -6,8 +6,7 @@ import QuantityButton from "./QuantityButton";
 
 import styles from "./DetailOrder.module.css";
 
-const DetailOrder = (props) => {
-  const { order, quantityHandler } = props;
+const DetailOrder = ({ order, quantityHandler }) => {
   const { id, name, quantity, total } = order;
   const isClicked = useRef({
     plus: false,

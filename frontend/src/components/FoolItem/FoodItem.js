@@ -4,10 +4,7 @@ import FoodPicture from "./FoodPicture";
 
 import styles from "./FoodItem.module.css";
 
-const FoodItem = (props) => {
-  const item = props.item;
-  const addOrderListHandler = props.addOrderListHandler;
-
+const FoodItem = ({ item, addOrderListHandler }) => {
   const onClickItem = () => {
     addOrderListHandler(item);
   };

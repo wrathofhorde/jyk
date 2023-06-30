@@ -1,9 +1,9 @@
 import styles from "./FoodPrice.module.css";
 
-const FoodPrice = (props) => {
+const FoodPrice = ({ price }) => {
   return (
     <div className={styles.area}>
-      <h3>{props.price}</h3>
+      <h3>{price}</h3>
     </div>
   );
 };

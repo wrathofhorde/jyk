@@ -1,12 +1,12 @@
 import styles from "./QuantityButton.module.css";
 
-const QuantityButton = (props) => {
-  const imageUrl = `/images/${props.img}`;
+const QuantityButton = ({ name, img, onClick }) => {
+  const imageUrl = `/images/${img}`;
 
   return (
     <div className={styles.area}>
-      <button className={styles.round} onClick={props.onClick}>
-        <img src={imageUrl} alt={props.name} className={styles.button_img} />
+      <button className={styles.round} onClick={onClick}>
+        <img src={imageUrl} alt={name} className={styles.button_img} />
       </button>
     </div>
   );

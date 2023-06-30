@@ -1,7 +1,6 @@
 import styles from "./Buttons.module.css";
 
-const Buttons = (props) => {
-  const { orderList, orderHandler, cancelHandler } = props;
+const Buttons = ({ orderList, orderHandler, cancelHandler }) => {
   const orderClassname = `${styles.common} ${styles.order}`;
   const cancelClassname = `${styles.common} ${styles.cancel}`;
 

@@ -3,39 +3,35 @@ import Card from "./Card";
 
 import styles from "./MessageModal.module.css";
 
-const Backdrop = (props) => {
-  return <div className={styles.backdrop} onClick={props.onConfirm} />;
+const Backdrop = ({ onConfirm }) => {
+  return <div className={styles.backdrop} onClick={onConfirm} />;
 };
 
-const ModalOverlay = (props) => {
+const ModalOverlay = ({ title, message, onConfirm }) => {
   return (
     <Card className={styles.modal}>
       <header className={styles.header}>
-        <h2>{props.title}</h2>
+        <h2>{title}</h2>
       </header>
       <div className={styles.content}>
-        <p>{props.message}</p>
+        <p>{message}</p>
       </div>
       <footer className={styles.actions}>
-        <button onClick={props.onConfirm}>Okay</button>
+        <button onClick={onConfirm}>Okay</button>
       </footer>
     </Card>
   );
 };
 
-const MessageModal = (props) => {
+const MessageModal = ({ title, message, onConfirm }) => {
   return (
     <div>
       {ReactDOM.createPortal(
-        <Backdrop onConfirm={props.onConfirm} />,
+        <Backdrop onConfirm={onConfirm} />,
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay
-          title={props.title}
-          message={props.message}
-          onConfirm={props.onConfirm}
-        />,
+        <ModalOverlay title={title} message={message} onConfirm={onConfirm} />,
         document.getElementById("overlay-root")
       )}
     </div>

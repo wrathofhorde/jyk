@@ -5,7 +5,7 @@ import MessageModal from "../UI/MessageModal";
 
 import styles from "./Intro.module.css";
 
-const Intro = (props) => {
+const Intro = () => {
   const serverUrl = "http://localhost:3001";
   const [foods, setFoods] = useState([]);
   const [foodtype, setFoodtype] = useState([]);

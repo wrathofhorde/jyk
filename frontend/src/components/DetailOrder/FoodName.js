@@ -1,9 +1,9 @@
 import styles from "./FoodName.module.css";
 
-const FoodName = (props) => {
+const FoodName = ({ name }) => {
   return (
     <div className={styles.area}>
-      <h3 className={styles.name}>{props.name}</h3>
+      <h3 className={styles.name}>{name}</h3>
     </div>
   );
 };

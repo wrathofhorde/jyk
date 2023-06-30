@@ -2,9 +2,7 @@ import DetailOrder from "../DetailOrder/DetailOrder";
 
 import styles from "./Details.module.css";
 
-const Details = (props) => {
-  const { orderList, quantityHandler } = props;
-
+const Details = ({ orderList, quantityHandler }) => {
   return (
     <div className={styles.area}>
       {orderList.map((order) => (

@@ -1,17 +1,20 @@
 .tab {
-  width: 150px;
+  width: 180px;
   height: 100%;
   font-size: medium;
   font-weight: 700;
-  color: darkslategrey;
-  background-color: azure;
+  color: darkseagreen;
+  background-color: rgb(226, 251, 251);
   border-left: 0;
   border-top: 0;
-  border-right: 2px solid rgb(200, 220, 220);
-  border-bottom: 2px solid rgb(200, 220, 220);
+  border: 1px solid rgb(200, 220, 220);
   flex-shrink: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-
 .focus {
+  font-size: large;
+  color: darkolivegreen;
+  background-color: azure;
   border-bottom: 2px solid azure;
 }

@@ -8,8 +8,16 @@ import styles from "./Menu.module.css";
 const Menu = ({ foodtype, items, addOrderListHandler }) => {
   const [focusTab, setFocusTab] = useState([]);
   const tapButtonHandler = (event, idx) => {
-    console.log(`tab clicked ${idx}`);
+    const arr = new Array(focusTab.length).fill(false);
+    arr[idx] = true;
+    setFocusTab(arr);
   };
+
+  useEffect(() => {
+    const arr = new Array(foodtype.length).fill(false);
+    arr[0] = true;
+    setFocusTab(arr);
+  }, [foodtype.length]);
 
   return (
     <div className={styles.menu}>
@@ -18,6 +26,7 @@ const Menu = ({ foodtype, items, addOrderListHandler }) => {
           <TabButton
             key={type.type_id}
             idx={idx}
+            focus={focusTab.length && focusTab[idx] === true ? true : false}
             tapButtonHandler={tapButtonHandler}
           >
             {type.name}

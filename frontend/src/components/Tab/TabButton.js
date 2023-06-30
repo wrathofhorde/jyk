@@ -1,12 +1,16 @@
 import styles from "./TabButton.module.css";
 
-const TabButton = ({ idx, children, tapButtonHandler }) => {
+const TabButton = ({ idx, focus, children, tapButtonHandler }) => {
+  let className = styles.tab;
+  if (focus) {
+    className += ` ${styles.focus}`;
+  }
   const onClick = (event) => {
     tapButtonHandler(event, idx);
   };
 
   return (
-    <button className={styles.tab} onClick={onClick}>
+    <button className={className} onClick={onClick}>
       {children}
     </button>
   );

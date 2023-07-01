@@ -35,9 +35,9 @@ const DetailOrder = ({ order, quantityHandler }) => {
       <FoodName name={name} />
       <FoodPrice price={`$${total}`} />
       <div className={styles.quantity_area}>
-        <QuantityButton img="minus.png" onClick={minusOnClickHandler} />
+        <QuantityButton img="minus.svg" onClick={minusOnClickHandler} />
         <FoodQuantity quantity={quantity} />
-        <QuantityButton img="plus.png" onClick={plusOnClickHandler} />
+        <QuantityButton img="plus.svg" onClick={plusOnClickHandler} />
       </div>
     </div>
   );

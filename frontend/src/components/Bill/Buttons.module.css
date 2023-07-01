@@ -11,10 +11,10 @@
 .cancel {
   color: darkslategrey;
   width: 40%;
-  background-color: rgb(214, 240, 249);
+  background-color: powderblue;
 }
 .cancel:active {
-  background-color: rgb(170, 199, 209);
+  background-color: paleturquoise;
 }
 .order {
   color: azure;

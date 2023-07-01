@@ -13,7 +13,7 @@
   border-top-right-radius: 10px;
 }
 .focus {
-  font-size: large;
+  /* font-size: large; */
   color: darkolivegreen;
   background-color: azure;
   border-bottom: 2px solid azure;

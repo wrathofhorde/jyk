@@ -1,0 +1,18 @@
+.area {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: calc(100vw - 100px);
+  top: calc((100vh - 100px));
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+}
+.image {
+  width: 60%;
+  height: 60%;
+  padding: 30px 0px 0px 30px;
+}

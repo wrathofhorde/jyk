@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import api from "../common/api";
+import paths from "../common/paths";
 import MessageModal from "../UI/MessageModal";
 import SettingsButton from "../components/SettingsButton";
 
@@ -52,7 +54,7 @@ const Intro = () => {
       )}
       <div className={styles.container}>
         <SettingsButton />
-        <Link to="/order" className={styles.order}>
+        <Link to={paths.order} className={styles.order}>
           ORDER
         </Link>
       </div>

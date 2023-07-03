@@ -16,6 +16,8 @@
   font-weight: bold;
   background: none;
   border: none;
+  text-shadow: -1px -1px 0 #aaa, 1px -1px 0 #aaa, -1px 1px 0 #aaa,
+    1px 1px 0 #aaa;
 }
 .order:active {
   font-size: 4.8rem;

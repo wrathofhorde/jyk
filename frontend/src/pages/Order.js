@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import Bill from "../UI/Bill";
 import Menu from "../UI/Menu";
 import api from "../common/api";
+import url from "../common/url";
+import paths from "../common/paths";
 import MessageModal from "../UI/MessageModal";
 
 import styles from "./Order.module.css";
 
 const Order = () => {
   const tableNo = "TABLE 01";
-  const serverUrl = "http://localhost:3001";
+  // const serverUrl = "http://localhost:3001";
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [foodtype, setFoodtype] = useState([]);
@@ -62,7 +65,7 @@ const Order = () => {
     try {
       const acc = orderList.reduce((acc, cur) => acc + cur.total, 0);
       const total = Math.round(acc * 100) / 100;
-      const rsp = await api.post(`${serverUrl}/foods/order`, {
+      const rsp = await api.post(url.foodOrder, {
         tableNo,
         orderList,
         total,
@@ -91,13 +94,13 @@ const Order = () => {
 
   const messageConfirmHandler = () => {
     setMessage(null);
-    navigate("/");
+    navigate(paths.home);
   };
 
   useEffect(() => {
     const getList = async () => {
       try {
-        const rsp = await api.get(`${serverUrl}/foods/list`);
+        const rsp = await api.get(url.foodList);
 
         if (rsp.resultCode === 0) {
           setFoods(rsp.data.items);

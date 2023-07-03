@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
+import paths from "../common/paths";
 import Sum from "../components/Bill/Sum";
 import Title from "../components/Bill/Title";
 import Details from "../components/Bill/Details";
@@ -18,7 +20,7 @@ const Bill = ({ title, orderList, quantityHandler, postOrderHandler }) => {
     if (isClicked.cancel) return;
     isClicked.cancel = true;
 
-    navigate("/");
+    navigate(paths.home);
 
     isClicked.cancel = false;
   };

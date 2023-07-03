@@ -1,18 +1,21 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+import paths from "../common/paths";
+
 import styles from "./SettingsButton.module.css";
 
 const SettingsButton = () => {
   const image = "settings.svg";
   const btn = useRef({ isClicked: false });
   const navigate = useNavigate();
+
   const onClick = () => {
     if (btn.isClicked) return;
 
     btn.isClicked = true;
 
-    navigate("/order");
+    navigate(paths.settings);
 
     btn.isClicked = false;
   };

@@ -3,10 +3,10 @@ import { createContext, useState, useContext } from "react";
 const FoodsContext = createContext({ foodType: [], foodList: [] });
 
 const FoodsContextProvider = ({ initValue, children }) => {
-  const initValue = useState(initValue);
-  console.log(initValue);
+  const initState = useState(initValue);
+  console.log(initState);
   return (
-    <FoodsContext.Provider value={initValue}>{children}</FoodsContext.Provider>
+    <FoodsContext.Provider value={initState}>{children}</FoodsContext.Provider>
   );
 };
 

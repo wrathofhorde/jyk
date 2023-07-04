@@ -11,11 +11,11 @@ settings.post("/pin", async (req, res) => {
   console.log("/pin");
   try {
     const { pinCode } = req.body;
-    console.log(pinCode);
-    console.log(typeof pinCode);
+
     if (pinCode !== "2890") {
       return res.send(responseBody.make(errorCode.failure, strings.failure));
     }
+
     return res.send(responseBody.make(errorCode.success, strings.success));
   } catch (e) {
     console.log(e);

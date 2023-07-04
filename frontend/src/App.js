@@ -4,7 +4,6 @@ import Order from "./pages/Order";
 import Intro from "./pages/Intro";
 import paths from "./common/paths";
 import Settings from "./pages/Settings";
-import LoginContextProvider from "./contexts/login-context";
 
 import styles from "./App.module.css";
 
@@ -14,15 +13,13 @@ import styles from "./App.module.css";
 
 const App = () => {
   return (
-    <LoginContextProvider initValue={false}>
-      <div className={styles.container}>
-        <Routes>
-          <Route path={paths.order} element={<Order />} />
-          <Route path={paths.settings} element={<Settings />} />
-          <Route path="*" element={<Intro />} />
-        </Routes>
-      </div>
-    </LoginContextProvider>
+    <div className={styles.container}>
+      <Routes>
+        <Route path={paths.order} element={<Order />} />
+        <Route path={paths.settings} element={<Settings />} />
+        <Route path="*" element={<Intro />} />
+      </Routes>
+    </div>
   );
 };
 

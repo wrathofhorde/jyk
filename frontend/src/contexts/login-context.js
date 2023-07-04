@@ -4,7 +4,7 @@ const loginContext = createContext(false);
 
 const LoginContextProvider = ({ initValue, children }) => {
   const initState = useState(initValue);
-  console.log(initState);
+  // console.log(initState);
   return (
     <loginContext.Provider value={initState}>{children}</loginContext.Provider>
   );

@@ -5,11 +5,13 @@ import Card from "../../UI/Card";
 import api from "../../common/api";
 import url from "../../common/url";
 import paths from "../../common/paths";
+import { useLoginContext } from "../../contexts/login-context";
 
 import styles from "./Login.module.css";
 
-const Login = (props) => {
+const Login = () => {
   const navigate = useNavigate();
+  const [, setIsLogin] = useLoginContext();
   const isClicked = useRef({ ok: false, cancel: false });
   const [enteredPassword, setEnteredPassword] = useState("");
   const [passwordIsValid, setPasswordIsValid] = useState(false);
@@ -34,6 +36,7 @@ const Login = (props) => {
 
     if (rsp.resultCode === 0) {
       console.log("success");
+      setIsLogin(true);
     } else {
       console.log("failure");
       navigate(paths.home);

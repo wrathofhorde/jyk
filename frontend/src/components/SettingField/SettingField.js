@@ -1,4 +1,4 @@
-import styles from "SettingField.module.css";
+import styles from "./SettingField.module.css";
 
 const SettingField = ({ label, inputId, inputState }) => {
   const [inputValue, setinputValue] = inputState;

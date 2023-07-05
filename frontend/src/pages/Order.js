@@ -11,8 +11,7 @@ import MessageModal from "../UI/MessageModal";
 import styles from "./Order.module.css";
 
 const Order = () => {
-  const tableNo = "TABLE 01";
-  // const serverUrl = "http://localhost:3001";
+  const tableName = "TABLE 01";
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [foodtype, setFoodtype] = useState([]);
@@ -66,7 +65,7 @@ const Order = () => {
       const acc = orderList.reduce((acc, cur) => acc + cur.total, 0);
       const total = Math.round(acc * 100) / 100;
       const rsp = await api.post(url.foodOrder, {
-        tableNo,
+        tableName,
         orderList,
         total,
       });
@@ -138,7 +137,7 @@ const Order = () => {
           addOrderListHandler={addOrderListHandler}
         />
         <Bill
-          title={tableNo}
+          title={tableName}
           orderList={orderList}
           quantityHandler={quantityHandler}
           postOrderHandler={postOrderHandler}

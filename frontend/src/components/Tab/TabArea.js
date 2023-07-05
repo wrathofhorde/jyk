@@ -1,5 +1,3 @@
-import TabButton from "./TabButton";
-
 import styles from "./TabArea.module.css";
 
 const TabArea = ({ children }) => {

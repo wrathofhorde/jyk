@@ -5,7 +5,7 @@ import Card from "../../UI/Card";
 import api from "../../common/api";
 import url from "../../common/url";
 import paths from "../../common/paths";
-import { useLoginContext } from "../../contexts/login-context";
+import useLoginContext from "../../contexts/login-context";
 
 import styles from "./Login.module.css";
 

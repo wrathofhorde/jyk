@@ -1,11 +1,25 @@
+.area {
+  width: 90%;
+  max-width: 30rem;
+  margin-bottom: 10rem;
+  overflow: hidden;
+}
+.header {
+  background: darkslateblue;
+  padding: 1rem;
+}
+.header h2 {
+  color: aliceblue;
+}
 .btns {
   width: 80%;
+  margin: 1rem auto;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
 }
-.btn button {
+.btns button {
   font-size: 1rem;
   border-radius: 6px;
   width: 40%;
@@ -16,7 +30,7 @@
   margin: 0.5rem;
   color: midnightblue;
 }
-.btn button:active {
+.btns button:active {
   border-color: aliceblue;
   background-color: cornflowerblue;
 }

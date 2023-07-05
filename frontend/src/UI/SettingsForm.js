@@ -1,21 +1,35 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Card from "./Card";
+import useLoginContext from "../contexts/login-context";
 import SettingField from "../components/SettingField/SettingField";
 
 import styles from "./SettingsForm.module.css";
-import { useNavigate } from "react-router-dom";
-import paths from "../common/paths";
 
 const SettingsForm = () => {
-  const navigate = useNavigate();
   const tableState = useState("");
+  const [, setIsLogin] = useLoginContext();
+  const isClicked = useRef({ ok: false, cancel: false });
 
-  const okHandler = () => {};
+  const okHandler = () => {
+    if (isClicked.ok) return;
+    isClicked.ok = true;
+
+    isClicked.ok = false;
+  };
   const cancelHandler = () => {
-    navigate(paths.home);
+    if (isClicked.cancel) return;
+    isClicked.cancel = true;
+
+    setIsLogin(false);
+
+    isClicked.cancel = false;
   };
 
   return (
-    <div>
+    <Card className={styles.area}>
+      <header className={styles.header}>
+        <h2>Setting</h2>
+      </header>
       <SettingField
         label="Table NO."
         inputId="tableNo"
@@ -25,7 +39,7 @@ const SettingsForm = () => {
         <button onClick={okHandler}>OK</button>
         <button onClick={cancelHandler}>Cancel</button>
       </div>
-    </div>
+    </Card>
   );
 };
 

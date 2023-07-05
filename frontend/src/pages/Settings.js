@@ -1,6 +1,6 @@
 import Login from "../components/login/Login";
 import SettingsForm from "../UI/SettingsForm";
-import { useLoginContext } from "../contexts/login-context";
+import useLoginContext from "../contexts/login-context";
 
 import styles from "./Settings.module.css";
 

@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const LoginContext = createContext(false);
 
-const LoginContextProvider = ({ initValue, children }) => {
+export const LoginContextProvider = ({ initValue, children }) => {
   const initState = useState(initValue);
   // console.log(initState);
   return (
@@ -10,7 +10,7 @@ const LoginContextProvider = ({ initValue, children }) => {
   );
 };
 
-export const useLoginContext = () => {
+const useLoginContext = () => {
   const value = useContext(LoginContext);
   if (value === undefined) {
     throw new Error("LoginContext is not defined");
@@ -18,4 +18,4 @@ export const useLoginContext = () => {
   return value;
 };
 
-export default LoginContextProvider;
+export default useLoginContext;

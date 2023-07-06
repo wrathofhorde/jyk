@@ -98,7 +98,9 @@ const Order = () => {
 
   useEffect(() => {
     const table = localStorage.getItem("table");
-    setTableName(table.length === 0 ? "Empty Table Name" : table);
+    setTableName(
+      table === null || table.length === 0 ? "Empty Table Name" : table
+    );
   }, []);
 
   useEffect(() => {

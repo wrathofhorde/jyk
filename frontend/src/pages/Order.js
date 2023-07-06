@@ -11,14 +11,24 @@ import MessageModal from "../UI/MessageModal";
 import styles from "./Order.module.css";
 
 const Order = () => {
+  const invalidTable = "Invalid Table Name";
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [foodtype, setFoodtype] = useState([]);
   const [orderList, setOrderList] = useState([]);
   const [message, setMessage] = useState(null);
-  const [tableName, setTableName] = useState("TABLE 01");
+  const [tableName, setTableName] = useState("");
+
+  const isValidTableName = (table) => {
+    return table !== null && table.length !== 0 && table !== invalidTable;
+  };
 
   const addOrderListHandler = (item) => {
+    if (!isValidTableName(tableName)) {
+      setMessage({ title: "Error", message: "Set a table name first!" });
+      return;
+    }
+
     setOrderList((prevState) => {
       const filtered = prevState.filter((food) => food.id === item.id);
       if (filtered.length) {
@@ -98,9 +108,7 @@ const Order = () => {
 
   useEffect(() => {
     const table = localStorage.getItem("table");
-    setTableName(
-      table === null || table.length === 0 ? "Empty Table Name" : table
-    );
+    setTableName(isValidTableName(table) ? table : invalidTable);
   }, []);
 
   useEffect(() => {

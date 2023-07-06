@@ -11,12 +11,12 @@ import MessageModal from "../UI/MessageModal";
 import styles from "./Order.module.css";
 
 const Order = () => {
-  const tableName = "TABLE 01";
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [foodtype, setFoodtype] = useState([]);
   const [orderList, setOrderList] = useState([]);
   const [message, setMessage] = useState(null);
+  const [tableName, setTableName] = useState("TABLE 01");
 
   const addOrderListHandler = (item) => {
     setOrderList((prevState) => {
@@ -95,6 +95,11 @@ const Order = () => {
     setMessage(null);
     navigate(paths.home);
   };
+
+  useEffect(() => {
+    const table = localStorage.getItem("table");
+    setTableName(table.length === 0 ? "Empty Table Name" : table);
+  }, []);
 
   useEffect(() => {
     const getList = async () => {

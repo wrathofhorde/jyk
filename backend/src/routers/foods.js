@@ -208,7 +208,7 @@ foods.post("/order", async (req, res) => {
   console.log("/order");
   try {
     console.log(req.body);
-    const { tableNo, orderList, total } = req.body;
+    const { tableName, orderList, total } = req.body;
     const acc = orderList.reduce((acc, cur) => acc + cur.total, 0);
     const check = Math.round(acc * 100) / 100;
 
@@ -216,8 +216,8 @@ foods.post("/order", async (req, res) => {
       logger.error(`total:${total} and check:${check} mismatched`);
       return res.send(responseBody.make(errorCode.failure, strings.failure));
     }
-    if (tableNo.length === 0) {
-      logger.error(`tableNo empty`);
+    if (tableName.length === 0) {
+      logger.error(`tableName empty`);
       return res.send(responseBody.make(errorCode.failure, strings.failure));
     }
     if (orderList.length === 0) {

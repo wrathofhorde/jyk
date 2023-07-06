@@ -24,6 +24,8 @@ const SettingsForm = () => {
       navigate(paths.home);
     }
 
+    setIsLogin(false);
+
     isClicked.ok = false;
   };
   const cancelHandler = () => {

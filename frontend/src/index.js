@@ -5,14 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { LoginContextProvider } from "./contexts/login-context";
+import { FoodsContextProvider } from "./contexts/foods-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <LoginContextProvider initValue={false}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <FoodsContextProvider initValue={{ foodtype: [], items: [] }}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </FoodsContextProvider>
   </LoginContextProvider>
   // </React.StrictMode>
 );

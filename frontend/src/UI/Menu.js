@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import FooodItem from "../components/FoolItem/FoodItem";
+
 import TabArea from "../components/Tab/TabArea";
 import TabButton from "../components/Tab/TabButton";
+import FooodItem from "../components/FoolItem/FoodItem";
+import useFoodsContext from "../contexts/foods-context";
 
 import styles from "./Menu.module.css";
 
-const Menu = ({ foodtype, items, addOrderListHandler }) => {
+const Menu = ({ addOrderListHandler }) => {
   const [focusTab, setFocusTab] = useState([]);
+  const [{ foodtype, items }] = useFoodsContext();
+
   const tapButtonHandler = (event, idx) => {
     const arr = new Array(focusTab.length).fill(false);
     arr[idx] = true;

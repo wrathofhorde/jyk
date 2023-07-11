@@ -13,8 +13,6 @@ import styles from "./Order.module.css";
 const Order = () => {
   const invalidTable = "Invalid Table Name";
   const navigate = useNavigate();
-  const [foods, setFoods] = useState([]);
-  const [foodtype, setFoodtype] = useState([]);
   const [orderList, setOrderList] = useState([]);
   const [message, setMessage] = useState(null);
   const [tableName, setTableName] = useState("");
@@ -111,31 +109,6 @@ const Order = () => {
     setTableName(isValidTableName(table) ? table : invalidTable);
   }, []);
 
-  useEffect(() => {
-    const getList = async () => {
-      try {
-        const rsp = await api.get(url.foodList);
-
-        if (rsp.resultCode === 0) {
-          setFoods(rsp.data.items);
-          setFoodtype(rsp.data.food_type);
-        } else {
-          setMessage({
-            title: "Error",
-            message: "Menu Failure",
-          });
-        }
-      } catch (e) {
-        setMessage({
-          title: e.name,
-          message: e.message,
-        });
-      }
-    };
-
-    getList();
-  }, [navigate]);
-
   return (
     <div>
       {message && (
@@ -146,11 +119,7 @@ const Order = () => {
         />
       )}
       <div className={styles.container}>
-        <Menu
-          foodtype={foodtype}
-          items={foods}
-          addOrderListHandler={addOrderListHandler}
-        />
+        <Menu addOrderListHandler={addOrderListHandler} />
         <Bill
           title={tableName}
           orderList={orderList}

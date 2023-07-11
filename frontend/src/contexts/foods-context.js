@@ -1,10 +1,10 @@
 import { createContext, useState, useContext } from "react";
 
-const FoodsContext = createContext({ foodType: [], foodList: [] });
+const FoodsContext = createContext({ foodtype: [], items: [] });
 
-const FoodsContextProvider = ({ initValue, children }) => {
+export const FoodsContextProvider = ({ initValue, children }) => {
   const initState = useState(initValue);
-  console.log(initState);
+  // console.log(initState);
   return (
     <FoodsContext.Provider value={initState}>{children}</FoodsContext.Provider>
   );
@@ -18,4 +18,4 @@ export const useFoodsContext = () => {
   return value;
 };
 
-export default FoodsContextProvider;
+export default useFoodsContext;

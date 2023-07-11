@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import api from "../common/api";
 import paths from "../common/paths";
 import MessageModal from "../UI/MessageModal";
+import useFoodsContext from "../contexts/foods-context";
 import SettingsButton from "../components/SettingsButton";
 
 import styles from "./Intro.module.css";
 
 const Intro = () => {
   const serverUrl = "http://localhost:3001";
-  const [foods, setFoods] = useState([]);
-  const [foodtype, setFoodtype] = useState([]);
   const [message, setMessage] = useState(null);
+  const [, setFoods] = useFoodsContext();
 
   const messageConfirmHandler = () => {
     setMessage(null);
@@ -24,8 +24,7 @@ const Intro = () => {
         const rsp = await api.get(`${serverUrl}/foods/list`);
 
         if (rsp.resultCode === 0) {
-          setFoods(rsp.data.items);
-          setFoodtype(rsp.data.food_type);
+          setFoods({ foodtype: rsp.data.food_type, items: rsp.data.items });
         } else {
           setMessage({
             title: "Error",
@@ -41,7 +40,7 @@ const Intro = () => {
     };
 
     getList();
-  }, []);
+  }, [setFoods]);
 
   return (
     <div>

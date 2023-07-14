@@ -10,5 +10,6 @@
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
+    justify-content: space-between;
   }
 }

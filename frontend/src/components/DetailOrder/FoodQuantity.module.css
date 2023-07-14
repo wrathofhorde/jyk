@@ -9,3 +9,8 @@
 .quantity {
   color: darkslategrey;
 }
+@media (max-width: 900px) {
+  .quantity {
+    font-size: x-large;
+  }
+}

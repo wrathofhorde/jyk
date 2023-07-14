@@ -9,3 +9,8 @@
 .name {
   color: darkslategrey;
 }
+@media (max-width: 900px) {
+  .name {
+    font-size: x-large;
+  }
+}

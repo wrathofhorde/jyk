@@ -10,3 +10,11 @@
 .title {
   color: darkslategrey;
 }
+@media (max-width: 900px) {
+  .area {
+    height: 10%;
+  }
+  .title {
+    font-size: x-large;
+  }
+}

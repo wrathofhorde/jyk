@@ -10,3 +10,11 @@
   color: darkslategrey;
   display: inline-block;
 }
+@media (max-width: 900px) {
+  .area {
+    height: 10%;
+  }
+  .total {
+    font-size: x-large;
+  }
+}

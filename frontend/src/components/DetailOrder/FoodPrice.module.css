@@ -9,3 +9,8 @@
 .price {
   color: darkslategrey;
 }
+@media (max-width: 900px) {
+  .price {
+    font-size: x-large;
+  }
+}

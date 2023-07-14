@@ -28,3 +28,11 @@
   color: darkgrey;
   background-color: rgb(94, 80, 185);
 }
+@media (max-width: 900px) {
+  .area {
+    height: 12%;
+  }
+  .common {
+    font-size: x-large;
+  }
+}

@@ -16,3 +16,8 @@
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 900px) {
+  .area {
+    height: 18%;
+  }
+}

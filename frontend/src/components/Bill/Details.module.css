@@ -3,4 +3,14 @@
   height: 80%;
   overflow: auto;
   /* background-color: aqua; */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
+.area::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 900px) {
+  .area {
+    height: 68%;
+  }
 }

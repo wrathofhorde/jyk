@@ -33,6 +33,7 @@ const SettingsForm = () => {
     isClicked.cancel = true;
 
     setIsLogin(false);
+    navigate(paths.home);
 
     isClicked.cancel = false;
   };

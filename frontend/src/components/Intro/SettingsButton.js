@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import paths from "../common/paths";
+import paths from "../../common/paths";
 
 import styles from "./SettingsButton.module.css";
 

@@ -1,4 +1,4 @@
-import Login from "../components/login/Login";
+import Login from "../components/Login/Login";
 import SettingsForm from "../UI/SettingsForm";
 import useLoginContext from "../contexts/login-context";
 

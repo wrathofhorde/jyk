@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import api from "../common/api";
 import paths from "../common/paths";
 import MessageModal from "../UI/MessageModal";
+import TableName from "../components/Intro/TableName";
 import useFoodsContext from "../contexts/foods-context";
-import SettingsButton from "../components/SettingsButton";
+import SettingsButton from "../components/Intro/SettingsButton";
 
 import styles from "./Intro.module.css";
 
@@ -52,6 +53,7 @@ const Intro = () => {
         />
       )}
       <div className={styles.container}>
+        <TableName />
         <SettingsButton />
         <Link to={paths.order} className={styles.order}>
           ORDER

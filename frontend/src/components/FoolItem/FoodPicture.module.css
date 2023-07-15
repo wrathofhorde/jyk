@@ -14,5 +14,6 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  border: 2px solid rgb(218, 248, 248);
   -webkit-user-drag: none;
 }

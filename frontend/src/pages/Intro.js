@@ -24,14 +24,31 @@ const Intro = () => {
       try {
         const rsp = await api.get(url.foodList);
 
-        if (rsp.resultCode === 0) {
-          setFoods({ foodtype: rsp.data.food_type, items: rsp.data.items });
-        } else {
+        if (rsp.resultCode !== 0) {
           setMessage({
             title: "Error",
             message: "Menu Failure",
           });
+          return;
         }
+
+        const rspFoodtype = rsp.data.food_type;
+        const rspItems = rsp.data.items;
+
+        const foodtype = [];
+        const items = rsp.data.items;
+
+        rspFoodtype.forEach((elem, idx) => {
+          const slectedItems = rspItems.filter(
+            (item) => item.type_id === elem.type_id
+          );
+          // console.log(slectedItems);
+          if (slectedItems.length) {
+            foodtype.push(elem);
+          }
+        });
+
+        setFoods({ foodtype, items });
       } catch (e) {
         setMessage({
           title: e.name,

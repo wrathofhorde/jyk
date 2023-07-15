@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import api from "../common/api";
+import url from "../common/url";
 import paths from "../common/paths";
 import MessageModal from "../UI/MessageModal";
 import TableName from "../components/Intro/TableName";
@@ -11,7 +12,6 @@ import SettingsButton from "../components/Intro/SettingsButton";
 import styles from "./Intro.module.css";
 
 const Intro = () => {
-  const serverUrl = "http://localhost:3001";
   const [message, setMessage] = useState(null);
   const [, setFoods] = useFoodsContext();
 
@@ -22,7 +22,7 @@ const Intro = () => {
   useEffect(() => {
     const getList = async () => {
       try {
-        const rsp = await api.get(`${serverUrl}/foods/list`);
+        const rsp = await api.get(url.foodList);
 
         if (rsp.resultCode === 0) {
           setFoods({ foodtype: rsp.data.food_type, items: rsp.data.items });

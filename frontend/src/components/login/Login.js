@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Card from "../../UI/Card";
@@ -10,6 +10,7 @@ import useLoginContext from "../../contexts/login-context";
 import styles from "./Login.module.css";
 
 const Login = () => {
+  const inputField = useRef();
   const navigate = useNavigate();
   const [, setIsLogin] = useLoginContext();
   const isClicked = useRef({ ok: false, cancel: false });
@@ -53,6 +54,9 @@ const Login = () => {
 
     isClicked.cancel = false;
   };
+  useEffect(() => {
+    inputField.current.focus();
+  }, []);
 
   return (
     <Card className={styles.login}>
@@ -66,6 +70,7 @@ const Login = () => {
             id="password"
             value={enteredPassword}
             onChange={passwordChangeHandler}
+            ref={inputField}
           />
           <div>
             <button>OK</button>

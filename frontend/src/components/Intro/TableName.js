@@ -5,7 +5,7 @@ const TableName = (props) => {
 
   return (
     <div className={styles.area}>
-      <h1 className={styles.table}>{tableName.length ? tableName : ""}</h1>
+      <h1 className={styles.table}>{tableName !== null ? tableName : ""}</h1>
     </div>
   );
 };
